@@ -1,0 +1,154 @@
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main {
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+}
+
+.card {
+	width: 300px;
+	height: 350px;
+	margin: 20px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	border-radius: 20px;
+	transition: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.card:hover {
+	width: 600px;
+	transition-delay: 0s;
+}
+
+.card__circle {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.card__circle::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--clr);
+	transition: 0.5s;
+	clip-path: circle(120px at center);
+}
+
+.card:hover .card__circle::before {
+	clip-path: circle(400px at center);
+}
+
+.card__circle > img {
+	width: 200px;
+	position: relative;
+	transition: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.card:hover .card__circle > img  {
+	transform: scale(0);
+	transition-delay: 0s;
+}
+
+.card__content {
+	width: 50%;
+	padding: 20px 20px 40px;
+	position: relative;
+	left: 20%;
+	color: #fff;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.5s;
+}
+
+.card:hover .card__content {
+	left: 0;
+	opacity: 1;
+	visibility: visible;
+	transition-delay: 0.5s;
+}
+
+.card__content h2 {
+	
+	font-size: 2.5em;
+	line-height: 1em;
+	text-transform: uppercase;
+}
+
+.card__content p {
+	margin: 15px 0;
+}
+
+.card__content a {
+	margin-top: 10px;
+	padding: 10px 20px;
+	display: inline-block;
+	position: relative;
+	color: #111;
+	font-weight: 500px;
+	text-decoration: none;
+	border-radius: 10px;
+	background: #fff;
+}
+
+.card--img {
+	height: 500px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transition: 0.5s;
+	transition-delay: 0s;
+	transform: translate(-50%, -50%) scale(0);
+}
+
+.card:hover .card--img {
+	left: 72%;
+	transition-delay: 0.5s;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 991px) {
+	.card {
+		width: auto;
+		max-width: 350px;
+		align-items: flex-start;
+	}
+	.card:hover {
+		height: 600px;
+	}
+	.card:hover .card--img {
+		height: 290px;
+		top: initial;
+		bottom: -5px;
+		left: 50%;
+		transform: translate(-50%, -0%) scale(1);
+	}
+	.card:hover .card__content {
+		width: 100%;
+		padding: 40px;
+		left: 0;
+	}
+}
